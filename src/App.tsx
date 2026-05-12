@@ -1,6 +1,9 @@
 import { useAuth } from './context/AuthContext';
 import { LoginView } from './components/LoginView';
 import { Button } from './components/ui/button';
+import { AdminDashboard } from './components/admin/AdminDashboard';
+import { Toaster } from './components/ui/sonner';
+import { ThemeToggle } from './components/ui/theme-toggle';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
@@ -23,20 +26,26 @@ function App() {
             <span className="text-sm text-zinc-500 capitalize">
               Hola, {user?.slug} ({user?.role})
             </span>
+            <ThemeToggle />
             <Button variant="outline" size="sm" onClick={logout}>
               Cerrar sesión
             </Button>
           </div>
         </header>
         <main className="p-6">
-          <div className="max-w-4xl mx-auto text-center py-20 space-y-4">
-            <h2 className="text-4xl font-bold tracking-tight">Bienvenido a Brahcaciones</h2>
-            <p className="text-zinc-500 text-lg">
-              Pronto podrás ver y gestionar los alojamientos de vacaciones.
-            </p>
-          </div>
+          {user?.role === 'admin' ? (
+            <AdminDashboard />
+          ) : (
+            <div className="max-w-4xl mx-auto text-center py-20 space-y-4">
+              <h2 className="text-4xl font-bold tracking-tight">Bienvenido a Brahcaciones</h2>
+              <p className="text-zinc-500 text-lg">
+                Pronto podrás ver y gestionar los alojamientos de vacaciones.
+              </p>
+            </div>
+          )}
         </main>
       </div>
+      <Toaster />
     </ProtectedRoute>
   );
 }
