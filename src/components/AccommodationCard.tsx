@@ -1,5 +1,5 @@
 import { Euro, MapPin, Waves, Flame, Bed, Umbrella, Lock } from "lucide-react";
-import { Alojamiento } from "../types/alojamiento";
+import type { Alojamiento } from "../types/alojamiento";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { StarRating } from "./ui/StarRating";

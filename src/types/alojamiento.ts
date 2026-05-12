@@ -1,3 +1,4 @@
+// Model definition for Alojamiento
 export interface Alojamiento {
   id: string;
   title: string;

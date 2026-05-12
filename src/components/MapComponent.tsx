@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { useTheme } from 'next-themes';
-import { Alojamiento } from '../types/alojamiento';
+import type { Alojamiento } from '../types/alojamiento';
 
 // Fix Leaflet default icon issues in Vite
 import icon from 'leaflet/dist/images/marker-icon.png';

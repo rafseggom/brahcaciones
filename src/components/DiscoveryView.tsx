@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { getAlojamientos } from "../lib/alojamientos";
-import { Alojamiento } from "../types/alojamiento";
+import type { Alojamiento } from "../types/alojamiento";
 import { AccommodationCard } from "./AccommodationCard";
 import MapComponent from "./MapComponent";
 import { AccommodationSheet } from "./AccommodationSheet";

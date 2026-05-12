@@ -16,7 +16,7 @@ import {
   DialogTitle, 
   DialogTrigger 
 } from '@/components/ui/dialog';
-import { Alojamiento } from '@/types/alojamiento';
+import type { Alojamiento } from '@/types/alojamiento';
 import { getAlojamientos, deleteAlojamiento } from '@/lib/alojamientos';
 import { AlojamientoForm } from './AlojamientoForm';
 import { Plus, Pencil, Trash2, ExternalLink } from 'lucide-react';

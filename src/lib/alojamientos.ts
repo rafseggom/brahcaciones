@@ -1,7 +1,11 @@
 import { supabase } from './supabase';
-import { Alojamiento } from '../types/alojamiento';
+import type { Alojamiento } from '../types/alojamiento';
 
 export const getAlojamientos = async (usuarioSlug?: string): Promise<Alojamiento[]> => {
+  if (!supabase) {
+    return [];
+  }
+
   const { data, error } = await supabase
     .from('alojamientos')
     .select('*, votos(puntuacion, usuario_slug)')
@@ -33,6 +37,11 @@ export const getAlojamientos = async (usuarioSlug?: string): Promise<Alojamiento
 };
 
 export const createAlojamiento = async (alojamiento: Omit<Alojamiento, 'id' | 'created_at'>): Promise<Alojamiento | null> => {
+  if (!supabase) {
+    console.warn('Supabase is not configured. createAlojamiento was skipped.');
+    return null;
+  }
+
   const { data, error } = await supabase
     .from('alojamientos')
     .insert([alojamiento])
@@ -48,6 +57,11 @@ export const createAlojamiento = async (alojamiento: Omit<Alojamiento, 'id' | 'c
 };
 
 export const updateAlojamiento = async (id: string, alojamiento: Partial<Alojamiento>): Promise<Alojamiento | null> => {
+  if (!supabase) {
+    console.warn('Supabase is not configured. updateAlojamiento was skipped.');
+    return null;
+  }
+
   const { data, error } = await supabase
     .from('alojamientos')
     .update(alojamiento)
@@ -64,6 +78,11 @@ export const updateAlojamiento = async (id: string, alojamiento: Partial<Alojami
 };
 
 export const deleteAlojamiento = async (id: string): Promise<boolean> => {
+  if (!supabase) {
+    console.warn('Supabase is not configured. deleteAlojamiento was skipped.');
+    return false;
+  }
+
   const { error } = await supabase
     .from('alojamientos')
     .delete()

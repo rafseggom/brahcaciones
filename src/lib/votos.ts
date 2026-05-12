@@ -1,6 +1,11 @@
 import { supabase } from './supabase';
 
 export async function upsertVote(alojamiento_id: string, usuario_slug: string, puntuacion: number) {
+  if (!supabase) {
+    console.warn('Supabase is not configured. upsertVote was skipped.');
+    return { data: null, error: new Error('Supabase is not configured') };
+  }
+
   const { data, error } = await supabase
     .from('votos')
     .upsert(
@@ -14,6 +19,10 @@ export async function upsertVote(alojamiento_id: string, usuario_slug: string, p
 }
 
 export async function getVotesSummary(alojamiento_id: string) {
+  if (!supabase) {
+    return { data: { avg_rating: 0, total_votes: 0 }, error: null };
+  }
+
   const { data, error } = await supabase
     .from('votos')
     .select('puntuacion')

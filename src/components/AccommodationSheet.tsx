@@ -1,4 +1,4 @@
-import { Alojamiento } from "../types/alojamiento";
+import type { Alojamiento } from "../types/alojamiento";
 import {
   Sheet,
   SheetContent,
