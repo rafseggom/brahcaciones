@@ -172,6 +172,18 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
                 className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
               />
             </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="description" className="font-bold">Descripción</Label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                placeholder="Cuéntale a la gente sobre este alojamiento..."
+                rows={4}
+                className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-2 text-sm shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              />
+            </div>
           </div>
         </div>
 
