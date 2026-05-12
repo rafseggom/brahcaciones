@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
 import type { Alojamiento } from '@/types/alojamiento';
 import { createAlojamiento, updateAlojamiento } from '@/lib/alojamientos';
 import { toast } from 'sonner';
+import { Waves, Flame, Bed, Armchair, Umbrella } from 'lucide-react';
+import { Toggle } from '@/components/ui/toggle';
 
 import { GeocodingSearch } from './GeocodingSearch';
 
@@ -164,46 +165,63 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 border-t pt-4">
-        <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="has_pool">Piscina</Label>
-          <Switch
-            id="has_pool"
-            checked={formData.has_pool}
-            onCheckedChange={(checked) => handleSwitchChange('has_pool', checked)}
-          />
-        </div>
-        <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="has_bbq">Barbacoa</Label>
-          <Switch
-            id="has_bbq"
-            checked={formData.has_bbq}
-            onCheckedChange={(checked) => handleSwitchChange('has_bbq', checked)}
-          />
-        </div>
-        <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="individual_beds">Camas Individuales</Label>
-          <Switch
-            id="individual_beds"
-            checked={formData.individual_beds}
-            onCheckedChange={(checked) => handleSwitchChange('individual_beds', checked)}
-          />
-        </div>
-        <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="sofa_bed">Sofá Cama</Label>
-          <Switch
-            id="sofa_bed"
-            checked={formData.sofa_bed}
-            onCheckedChange={(checked) => handleSwitchChange('sofa_bed', checked)}
-          />
-        </div>
-        <div className="flex items-center justify-between space-x-2">
-          <Label htmlFor="near_beach">Cerca de la Playa</Label>
-          <Switch
-            id="near_beach"
-            checked={formData.near_beach}
-            onCheckedChange={(checked) => handleSwitchChange('near_beach', checked)}
-          />
+      <div className="space-y-2 border-t pt-4">
+        <Label>Características</Label>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <Toggle
+            aria-label="Piscina"
+            pressed={formData.has_pool}
+            onPressedChange={(pressed) => handleSwitchChange('has_pool', pressed)}
+            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-orange-500 data-[state=on]:text-white transition-all border border-orange-100/50"
+            variant="outline"
+          >
+            <Waves className="h-5 w-5" />
+            <span>Piscina</span>
+          </Toggle>
+
+          <Toggle
+            aria-label="Barbacoa"
+            pressed={formData.has_bbq}
+            onPressedChange={(pressed) => handleSwitchChange('has_bbq', pressed)}
+            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-pink-500 data-[state=on]:text-white transition-all border border-pink-100/50"
+            variant="outline"
+          >
+            <Flame className="h-5 w-5" />
+            <span>Barbacoa</span>
+          </Toggle>
+
+          <Toggle
+            aria-label="Camas Individuales"
+            pressed={formData.individual_beds}
+            onPressedChange={(pressed) => handleSwitchChange('individual_beds', pressed)}
+            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-orange-500 data-[state=on]:text-white transition-all border border-orange-100/50"
+            variant="outline"
+          >
+            <Bed className="h-5 w-5" />
+            <span className="text-xs">Individuales</span>
+          </Toggle>
+
+          <Toggle
+            aria-label="Sofá Cama"
+            pressed={formData.sofa_bed}
+            onPressedChange={(pressed) => handleSwitchChange('sofa_bed', pressed)}
+            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-pink-500 data-[state=on]:text-white transition-all border border-pink-100/50"
+            variant="outline"
+          >
+            <Armchair className="h-5 w-5" />
+            <span>Sofá Cama</span>
+          </Toggle>
+
+          <Toggle
+            aria-label="Cerca de la Playa"
+            pressed={formData.near_beach}
+            onPressedChange={(pressed) => handleSwitchChange('near_beach', pressed)}
+            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-orange-500 data-[state=on]:text-white transition-all border border-orange-100/50"
+            variant="outline"
+          >
+            <Umbrella className="h-5 w-5" />
+            <span>Playa</span>
+          </Toggle>
         </div>
       </div>
 
