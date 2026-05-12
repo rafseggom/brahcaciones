@@ -5,7 +5,7 @@ create table if not exists public.alojamientos (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   title TEXT NOT NULL,
   price TEXT,
-  dates TEXT,
+  rooms INTEGER DEFAULT 0,
   location_lat DOUBLE PRECISION,
   location_lng DOUBLE PRECISION,
   image_url TEXT,
