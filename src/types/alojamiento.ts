@@ -14,4 +14,7 @@ export interface Alojamiento {
   near_beach: boolean;
   link?: string;
   created_at?: string;
+  avg_rating?: number;
+  total_votes?: number;
+  user_vote?: number;
 }
