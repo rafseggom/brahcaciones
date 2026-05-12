@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAlojamientos } from "../lib/alojamientos";
 import { Alojamiento } from "../types/alojamiento";
 import { AccommodationCard } from "./AccommodationCard";
+import MapComponent from "./MapComponent";
 
 export function DiscoveryView() {
   const [alojamientos, setAlojamientos] = useState<Alojamiento[]>([]);
@@ -19,11 +20,8 @@ export function DiscoveryView() {
   return (
     <div className="flex flex-col lg:flex-row h-[calc(100vh-65px)] overflow-hidden">
       {/* Map Panel */}
-      <div className="w-full lg:w-[60%] h-[300px] lg:h-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center border-r">
-        <div className="text-center">
-          <p className="text-zinc-500 font-medium text-lg">Map goes here</p>
-          <p className="text-zinc-400 text-sm">(Leaflet integration coming in next task)</p>
-        </div>
+      <div className="w-full lg:w-[60%] h-[400px] lg:h-full bg-zinc-100 dark:bg-zinc-900 border-r relative z-0">
+        <MapComponent alojamientos={alojamientos} />
       </div>
 
       {/* List Panel */}
