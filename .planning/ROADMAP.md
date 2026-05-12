@@ -46,7 +46,10 @@
   1. User can see all accommodations as pins on a Leaflet map.
   2. User can toggle between light and dark modes, with the setting persisting across sessions.
   3. User can view specific details of an accommodation by clicking on a list item or map pin.
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 03-01-PLAN.md — Theme management, split-view layout, and accommodation list with PPP.
+- [ ] 03-02-PLAN.md — Leaflet map integration with markers and theme-synced styling.
+- [ ] 03-03-PLAN.md — Detail side panel (Sheet) and interaction wiring.
 **UI hint**: yes
 
 ### Phase 4: Decision Loop
@@ -66,5 +69,5 @@
 |-------|----------------|--------|-----------|
 | 1. Foundations & Access | 0/3 | Not started | - |
 | 2. Admin Control | 0/3 | Not started | - |
-| 3. Discovery & Context | 0/0 | Not started | - |
+| 3. Discovery & Context | 0/3 | Not started | - |
 | 4. Decision Loop | 0/0 | Not started | - |
