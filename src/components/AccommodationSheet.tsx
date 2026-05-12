@@ -13,7 +13,8 @@ import {
   ExternalLink,
   MapPin,
   Euro,
-  Lock
+  Lock,
+  Home
 } from "lucide-react";
 import { StarRating } from "./ui/StarRating";
 import { useAuth } from "../context/AuthContext";
@@ -109,6 +110,19 @@ export function AccommodationSheet({
                   <span className="text-sm italic">Vota para desbloquear las estadísticas del grupo</span>
                 </div>
               )}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Detalles</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 border">
+                <p className="text-[10px] text-zinc-500 uppercase font-bold mb-1 tracking-wider">Habitaciones</p>
+                <div className="flex items-center text-xl font-bold">
+                  <Home className="h-4 w-4 mr-1 text-zinc-400" />
+                  {alojamiento.rooms || 0}
+                </div>
+              </div>
             </div>
           </div>
 
