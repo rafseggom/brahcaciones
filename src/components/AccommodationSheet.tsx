@@ -12,20 +12,27 @@ import {
   Waves,
   ExternalLink,
   MapPin,
-  Euro
+  Euro,
+  Lock
 } from "lucide-react";
+import { StarRating } from "./ui/StarRating";
+import { useAuth } from "../context/AuthContext";
+import { upsertVote } from "../lib/votos";
 
 interface AccommodationSheetProps {
   alojamiento: Alojamiento | null;
   isOpen: boolean;
   onClose: () => void;
+  onVote?: () => void;
 }
 
 export function AccommodationSheet({
   alojamiento,
   isOpen,
-  onClose
+  onClose,
+  onVote
 }: AccommodationSheetProps) {
+  const { user } = useAuth();
   if (!alojamiento) return null;
 
   const features = [
@@ -37,7 +44,18 @@ export function AccommodationSheet({
   ].filter(f => f.value);
 
   const GROUP_SIZE = 5;
-  const ppp = alojamiento.price ? (alojamiento.price / GROUP_SIZE).toFixed(2) : "N/A";
+  const priceNum = alojamiento.price ? parseFloat(alojamiento.price) : 0;
+  const ppp = priceNum ? (priceNum / GROUP_SIZE).toFixed(2) : "N/A";
+
+  const handleVote = async (rating: number) => {
+    if (!user || !alojamiento) return;
+    const { error } = await upsertVote(alojamiento.id, user.slug, rating);
+    if (!error && onVote) {
+      onVote();
+    }
+  };
+
+  const hasVoted = alojamiento.user_vote !== undefined && alojamiento.user_vote !== null;
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -60,6 +78,39 @@ export function AccommodationSheet({
               />
             </div>
           )}
+
+          <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900 border space-y-4">
+            <div>
+              <p className="text-[10px] text-zinc-500 uppercase font-bold mb-2 tracking-wider">Tu Puntuación</p>
+              <StarRating 
+                rating={alojamiento.user_vote || 0} 
+                onChange={handleVote}
+                className="scale-110 origin-left"
+              />
+            </div>
+            
+            <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <p className="text-[10px] text-zinc-500 uppercase font-bold mb-2 tracking-wider">Media del Grupo</p>
+              {hasVoted ? (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-2xl font-black text-zinc-900 dark:text-zinc-100">
+                      {alojamiento.avg_rating?.toFixed(1) || "0.0"}
+                    </span>
+                    <StarRating rating={Math.round(alojamiento.avg_rating || 0)} readOnly className="scale-75" />
+                  </div>
+                  <span className="text-xs text-zinc-400 font-medium">
+                    basada en {alojamiento.total_votes} {alojamiento.total_votes === 1 ? 'voto' : 'votos'}
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 text-zinc-400 py-1">
+                  <Lock className="h-4 w-4" />
+                  <span className="text-sm italic">Vota para desbloquear las estadísticas del grupo</span>
+                </div>
+              )}
+            </div>
+          </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Detalles Financieros</h3>

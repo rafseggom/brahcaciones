@@ -1,16 +1,22 @@
-import { Euro, MapPin, Waves, Flame, Bed, Umbrella } from "lucide-react";
+import { Euro, MapPin, Waves, Flame, Bed, Umbrella, Lock } from "lucide-react";
 import { Alojamiento } from "../types/alojamiento";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { StarRating } from "./ui/StarRating";
+import { useAuth } from "../context/AuthContext";
+import { upsertVote } from "../lib/votos";
 
 interface AccommodationCardProps {
   alojamiento: Alojamiento;
   onClick?: () => void;
+  onVote?: () => void;
 }
 
-export function AccommodationCard({ alojamiento, onClick }: AccommodationCardProps) {
+export function AccommodationCard({ alojamiento, onClick, onVote }: AccommodationCardProps) {
+  const { user } = useAuth();
   const GROUP_SIZE = 5;
-  const ppp = alojamiento.price ? (alojamiento.price / GROUP_SIZE).toFixed(2) : "N/A";
+  const priceNum = alojamiento.price ? parseFloat(alojamiento.price) : 0;
+  const ppp = priceNum ? (priceNum / GROUP_SIZE).toFixed(2) : "N/A";
 
   const features = [
     { icon: Waves, value: alojamiento.has_pool },
@@ -18,6 +24,16 @@ export function AccommodationCard({ alojamiento, onClick }: AccommodationCardPro
     { icon: Bed, value: alojamiento.individual_beds || alojamiento.sofa_bed },
     { icon: Umbrella, value: alojamiento.near_beach },
   ].filter(f => f.value);
+
+  const handleVote = async (rating: number) => {
+    if (!user) return;
+    const { error } = await upsertVote(alojamiento.id, user.slug, rating);
+    if (!error && onVote) {
+      onVote();
+    }
+  };
+
+  const hasVoted = alojamiento.user_vote !== undefined && alojamiento.user_vote !== null;
 
   return (
     <Card 
@@ -39,7 +55,7 @@ export function AccommodationCard({ alojamiento, onClick }: AccommodationCardPro
       </div>
 
       <div className="flex flex-col flex-1 p-5">
-        <div className="flex justify-between items-start mb-2">
+        <div className="flex justify-between items-start mb-1">
           <h3 className="font-bold text-lg leading-tight group-hover:text-blue-600 transition-colors">
             {alojamiento.title}
           </h3>
@@ -49,7 +65,29 @@ export function AccommodationCard({ alojamiento, onClick }: AccommodationCardPro
           </Badge>
         </div>
 
-        <p className="text-zinc-500 text-sm line-clamp-2 mb-4">
+        <div className="flex items-center gap-3 mb-3" onClick={(e) => e.stopPropagation()}>
+          <StarRating 
+            rating={alojamiento.user_vote || 0} 
+            onChange={handleVote}
+          />
+          {hasVoted ? (
+            <div className="flex items-center gap-1.5">
+              <span className="text-sm font-bold text-zinc-700 dark:text-zinc-300">
+                {alojamiento.avg_rating?.toFixed(1)}
+              </span>
+              <span className="text-[10px] text-zinc-400 font-medium">
+                ({alojamiento.total_votes} {alojamiento.total_votes === 1 ? 'voto' : 'votos'})
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1 text-zinc-400">
+              <Lock className="h-3 w-3" />
+              <span className="text-[11px] italic">Vota para ver la media</span>
+            </div>
+          )}
+        </div>
+
+        <p className="text-zinc-500 text-sm line-clamp-1 mb-4">
           {alojamiento.description || "Sin descripción disponible."}
         </p>
 
