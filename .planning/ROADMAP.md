@@ -6,7 +6,7 @@
 - [x] **Phase 2: Admin Control** - Interface and logic for accommodation management (CRUD).
 - [x] **Phase 3: Discovery & Context** - Map and list views for exploring accommodations.
 - [x] **Phase 4: Decision Loop** - Voting system, price calculations, and final polish.
-- [ ] **Phase 5: Refinement & Visual Polish** - UI cleanup, full-screen layout, and data simplification.
+- [x] **Phase 5: Refinement & Visual Polish** - UI cleanup, full-screen layout, and data simplification. (completed 2026-05-12)
 
 ## Phase Details
 
@@ -36,8 +36,10 @@
   2. Dark/Light mode toggle works globally and manually.
   3. Admin form handles boolean features correctly and lacks the date field.
   4. Modals are fully opaque and visually distinct from the background.
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 3 plans
+- [x] 05-01-PLAN.md — Simplified data model (remove dates, add rooms).
+- [x] 05-02-PLAN.md — Full-width layout and theme persistence.
+- [x] 05-03-PLAN.md — Visual polish (Option B) and feature buttons.
 
 ## Progress
 
@@ -47,4 +49,4 @@
 | 2. Admin Control | 3/3 | Completed | 12/05/2026 |
 | 3. Discovery & Context | 3/3 | Completed | 12/05/2026 |
 | 4. Decision Loop | 3/3 | Completed | 12/05/2026 |
-| 5. Refinement & Visual Polish | 0/0 | Not started | - |
+| 5. Refinement & Visual Polish | 3/3 | Complete   | 2026-05-12 |

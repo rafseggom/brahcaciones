@@ -36,7 +36,7 @@
 ### UI/UX Refinements
 - [ ] **REF-01**: Layout de pantalla completa (eliminar márgenes laterales excesivos).
 - [ ] **REF-02**: Toggle de tema manual (claro/oscuro) que afecte a toda la app, no solo al mapa.
-- [ ] **REF-03**: Mejora estética general (efectos visuales, más color, menos plano).
+- [x] **REF-03**: Mejora estética general (efectos visuales, más color, menos plano).
 - [ ] **REF-04**: Modales opacos para evitar confusión visual con el fondo.
 
 ### Data & Logic Cleanup
@@ -45,8 +45,8 @@
 - [ ] **DATA-03**: Asegurar que los botones de características (piscina, etc.) funcionen y persistan correctamente.
 
 ### User View Enhancements
-- [ ] **USER-05**: Mostrar tanto Precio Total como Precio por Persona (PPP) en la vista de usuario.
-- [ ] **USER-06**: Ajustar bloques de información para evitar recortes visuales.
+- [x] **USER-05**: Mostrar tanto Precio Total como Precio por Persona (PPP) en la vista de usuario.
+- [x] **USER-06**: Ajustar bloques de información para evitar recortes visuales.
 
 ## v2 Requirements (Deferred)
 

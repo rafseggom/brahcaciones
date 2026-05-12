@@ -1,15 +1,15 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: v1
+milestone_name: milestone
 status: in-progress
-last_updated: "2026-05-12T20:00:00.000Z"
+last_updated: "2026-05-12T18:56:20.495Z"
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 3
   total_plans: 15
-  completed_plans: 12
-  percent: 80
+  completed_plans: 10
+  percent: 60
 ---
 
 # Project State: Brahcaciones
@@ -35,6 +35,7 @@ progress:
 ## Accumulated Context
 
 ### Decisions
+
 - Pseudo-Auth using `.env` codes for 5 users and 1 admin.
 - Supabase for persistence.
 - Leaflet for mapping.
@@ -47,9 +48,11 @@ progress:
 - Phase 5: Style Option B (Playful/Travel), Full Screen Layout, Manual Theme Toggle.
 
 ### Blockers / Risks
+
 - None.
 
 ### Todos
+
 - [x] Phase 1: Foundations & Access
 - [x] Phase 2: Admin Control
 - [x] Phase 3: Discovery & Context
