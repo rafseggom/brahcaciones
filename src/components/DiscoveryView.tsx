@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAlojamientos } from "../lib/alojamientos";
 import { Alojamiento } from "../types/alojamiento";
+import { AccommodationCard } from "./AccommodationCard";
 
 export function DiscoveryView() {
   const [alojamientos, setAlojamientos] = useState<Alojamiento[]>([]);
@@ -43,10 +44,7 @@ export function DiscoveryView() {
         ) : (
           <div className="grid gap-4">
             {alojamientos.map((alojamiento) => (
-              <div key={alojamiento.id} className="p-4 bg-white dark:bg-zinc-900 border rounded-xl shadow-sm">
-                <h3 className="font-semibold">{alojamiento.title}</h3>
-                <p className="text-sm text-zinc-500">{alojamiento.location}</p>
-              </div>
+              <AccommodationCard key={alojamiento.id} alojamiento={alojamiento} />
             ))}
           </div>
         )}
