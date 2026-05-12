@@ -8,8 +8,8 @@
 ## Current Position
 
 **Phase**: 1
-**Plan**: None
-**Status**: Initializing
+**Plan**: None (Ready to execute 01-01)
+**Status**: Planning Complete
 **Progress**: [░░░░░░░░░░░░░░░░░░░░] 0%
 
 ## Performance Metrics
@@ -24,7 +24,8 @@
 - Pseudo-Auth using `.env` codes for 5 users and 1 admin.
 - Supabase for persistence.
 - Leaflet for mapping.
-- React 19 + Tailwind 4 + shadcn/ui.
+- React 19 + Vite + Tailwind 4 + shadcn/ui.
+- Use slug-based identification in DB (no Supabase Auth).
 
 ### Blockers / Risks
 - Leaflet asset path configuration in Vite can be problematic.
@@ -36,5 +37,5 @@
 
 ## Session Continuity
 
-**Last session ended at**: Project initialization and roadmap creation.
-**Next session should start with**: Planning Phase 1.
+**Last session ended at**: Planning Phase 1 complete.
+**Next session should start with**: Executing Phase 1, Plan 1.

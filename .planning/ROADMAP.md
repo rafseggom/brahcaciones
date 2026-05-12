@@ -18,7 +18,10 @@
   1. A user can enter a code from `.env` and be redirected to the correct dashboard (User/Admin).
   2. The session remains active after a page refresh.
   3. Clicking "Logout" clears the session and returns the user to the login screen.
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 01-01-PLAN.md — Initialize Vite/Tailwind 4 and Supabase infrastructure.
+- [ ] 01-02-PLAN.md — Implement Pseudo-Auth logic and Login interface.
+- [ ] 01-03-PLAN.md — Set up Protected Routing and App Shell with Logout.
 
 ### Phase 2: Admin Control
 **Goal**: Provide the administrator with tools to manage the vacation options.
@@ -50,7 +53,7 @@
 **Requirements**: VOTE-01, VOTE-02, VOTE-03
 **Success Criteria** (what must be TRUE):
   1. Each of the 5 users can submit a 0-5 star vote for any accommodation.
-  2. The system displays the average rating and Price per Person (PPP) for each option.
+  2. El sistema muestra el promedio de votos y el Precio por Persona (PPP) por opción.
   3. Updating a vote immediately reflects the new average without duplicate entries in the DB.
 **Plans**: TBD
 
@@ -58,7 +61,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundations & Access | 0/0 | Not started | - |
+| 1. Foundations & Access | 0/3 | Not started | - |
 | 2. Admin Control | 0/0 | Not started | - |
 | 3. Discovery & Context | 0/0 | Not started | - |
 | 4. Decision Loop | 0/0 | Not started | - |
