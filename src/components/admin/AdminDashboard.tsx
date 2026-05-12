@@ -74,17 +74,19 @@ export const AdminDashboard: React.FC = () => {
           <Button onClick={handleAdd}>
             <Plus className="mr-2 h-4 w-4" /> Añadir Alojamiento
           </Button>
-          <DialogContent className="max-w-2xl overflow-y-auto max-h-[90vh]">
-            <DialogHeader>
-              <DialogTitle>
+          <DialogContent className="w-[calc(100vw-1.5rem)] max-w-7xl max-h-[92vh] overflow-hidden p-0">
+            <div className="max-h-[92vh] overflow-y-auto px-6 py-6 sm:px-8 sm:py-8">
+              <DialogHeader className="mb-6">
+                <DialogTitle className="text-2xl font-black tracking-tight sm:text-3xl">
                 {selectedAlojamiento ? 'Editar Alojamiento' : 'Nuevo Alojamiento'}
-              </DialogTitle>
-            </DialogHeader>
-            <AlojamientoForm 
-              alojamiento={selectedAlojamiento} 
-              onSuccess={handleFormSuccess}
-              onCancel={() => setIsDialogOpen(false)}
-            />
+                </DialogTitle>
+              </DialogHeader>
+              <AlojamientoForm 
+                alojamiento={selectedAlojamiento} 
+                onSuccess={handleFormSuccess}
+                onCancel={() => setIsDialogOpen(false)}
+              />
+            </div>
           </DialogContent>
         </Dialog>
       </div>

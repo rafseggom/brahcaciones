@@ -107,102 +107,107 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 py-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="col-span-2 space-y-2">
-          <Label className="font-bold text-zinc-500 dark:text-zinc-400">Búsqueda de Dirección (Autocompleta Lat/Lng)</Label>
-          <GeocodingSearch onSelect={handleGeocodingSelect} />
-        </div>
-        
-        <div className="space-y-2">
-          <Label htmlFor="title" className="font-bold">Título</Label>
-          <Input
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="price" className="font-bold">Precio</Label>
-          <Input
-            id="price"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            placeholder="Ej: 150€/noche"
-            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="rooms" className="font-bold">Habitaciones</Label>
-          <Input
-            id="rooms"
-            name="rooms"
-            type="number"
-            value={formData.rooms}
-            onChange={(e) => setFormData(prev => ({ ...prev, rooms: parseInt(e.target.value) || 0 }))}
-            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="link" className="font-bold">Enlace (Airbnb/Booking)</Label>
-          <Input
-            id="link"
-            name="link"
-            value={formData.link}
-            onChange={handleChange}
-            placeholder="https://..."
-            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
-          />
-        </div>
-        <div className="col-span-2 space-y-2">
-          <Label htmlFor="image_url" className="font-bold">URL de Imagen</Label>
-          <Input
-            id="image_url"
-            name="image_url"
-            value={formData.image_url}
-            onChange={handleChange}
-            placeholder="https://..."
-            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
-          />
-        </div>
-      </div>
+    <form onSubmit={handleSubmit} className="space-y-6 py-2">
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="space-y-5 rounded-3xl border border-zinc-200/80 bg-zinc-50/70 p-5 dark:border-zinc-800 dark:bg-zinc-900/40">
+          <div className="space-y-2">
+            <Label className="text-xs font-black uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">Búsqueda de dirección</Label>
+            <GeocodingSearch onSelect={handleGeocodingSelect} />
+          </div>
 
-      <div className="space-y-3 border-t pt-4">
-        <Label className="font-bold text-lg">Características</Label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="title" className="font-bold">Título</Label>
+              <Input
+                id="title"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                required
+                className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="price" className="font-bold">Precio total</Label>
+              <Input
+                id="price"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                placeholder="Ej: 150"
+                className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="rooms" className="font-bold">Habitaciones</Label>
+              <Input
+                id="rooms"
+                name="rooms"
+                type="number"
+                min="0"
+                value={formData.rooms}
+                onChange={(e) => setFormData(prev => ({ ...prev, rooms: parseInt(e.target.value) || 0 }))}
+                className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
+              />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="link" className="font-bold">Enlace (Airbnb/Booking)</Label>
+              <Input
+                id="link"
+                name="link"
+                value={formData.link}
+                onChange={handleChange}
+                placeholder="https://..."
+                className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
+              />
+            </div>
+            <div className="space-y-2 sm:col-span-2">
+              <Label htmlFor="image_url" className="font-bold">URL de imagen</Label>
+              <Input
+                id="image_url"
+                name="image_url"
+                value={formData.image_url}
+                onChange={handleChange}
+                placeholder="https://..."
+                className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-5 rounded-3xl border border-zinc-200/80 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="space-y-1">
+            <Label className="text-xs font-black uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">Características</Label>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">Marca lo que tenga el alojamiento. Los botones activos se iluminan para que se vea rápido.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {[
-            { id: 'has_pool', label: 'Piscina', icon: Waves, color: 'bg-orange-500' },
-            { id: 'has_bbq', label: 'Barbacoa', icon: Flame, color: 'bg-pink-500' },
-            { id: 'individual_beds', label: 'Individuales', icon: Bed, color: 'bg-orange-500' },
-            { id: 'sofa_bed', label: 'Sofá Cama', icon: Armchair, color: 'bg-pink-500' },
-            { id: 'near_beach', label: 'Playa', icon: Umbrella, color: 'bg-orange-500' },
+            { id: 'has_pool', label: 'Piscina', icon: Waves, activeClass: 'aria-pressed:bg-orange-500 aria-pressed:text-white aria-pressed:border-orange-500 aria-pressed:shadow-[0_0_0_1px_rgba(249,115,22,0.18),0_12px_30px_rgba(249,115,22,0.28)]' },
+            { id: 'has_bbq', label: 'Barbacoa', icon: Flame, activeClass: 'aria-pressed:bg-pink-500 aria-pressed:text-white aria-pressed:border-pink-500 aria-pressed:shadow-[0_0_0_1px_rgba(236,72,153,0.18),0_12px_30px_rgba(236,72,153,0.28)]' },
+            { id: 'individual_beds', label: 'Camas individuales', icon: Bed, activeClass: 'aria-pressed:bg-amber-500 aria-pressed:text-white aria-pressed:border-amber-500 aria-pressed:shadow-[0_0_0_1px_rgba(245,158,11,0.18),0_12px_30px_rgba(245,158,11,0.28)]' },
+            { id: 'sofa_bed', label: 'Sofá cama', icon: Armchair, activeClass: 'aria-pressed:bg-cyan-500 aria-pressed:text-white aria-pressed:border-cyan-500 aria-pressed:shadow-[0_0_0_1px_rgba(6,182,212,0.18),0_12px_30px_rgba(6,182,212,0.28)]' },
+            { id: 'near_beach', label: 'Cerca de la playa', icon: Umbrella, activeClass: 'aria-pressed:bg-emerald-500 aria-pressed:text-white aria-pressed:border-emerald-500 aria-pressed:shadow-[0_0_0_1px_rgba(16,185,129,0.18),0_12px_30px_rgba(16,185,129,0.28)]' },
           ].map((feature) => (
             <motion.div key={feature.id} whileTap={{ scale: 0.95 }}>
               <Toggle
                 aria-label={feature.label}
                 pressed={formData[feature.id as keyof typeof formData] as boolean}
                 onPressedChange={(pressed) => handleSwitchChange(feature.id, pressed)}
-                className={`flex w-full items-center gap-2 justify-start px-4 h-14 rounded-2xl transition-all duration-300 border-2
-                  data-[state=on]:${feature.color} data-[state=on]:text-white data-[state=on]:border-transparent data-[state=on]:shadow-lg
-                  data-[state=off]:bg-zinc-50 data-[state=off]:text-zinc-400 data-[state=off]:border-zinc-100 dark:data-[state=off]:bg-zinc-900 dark:data-[state=off]:border-zinc-800
-                  hover:data-[state=off]:border-zinc-300`}
                 variant="outline"
+                className={`flex h-14 w-full justify-start gap-3 rounded-2xl border-zinc-200 bg-zinc-50 px-4 text-left font-bold text-zinc-600 shadow-sm transition-all duration-300 hover:border-zinc-300 hover:bg-white hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 ${feature.activeClass}`}
               >
-                <feature.icon className={`h-5 w-5 ${formData[feature.id as keyof typeof formData] ? 'animate-bounce' : ''}`} />
-                <span className="font-bold text-sm">{feature.label}</span>
+                <feature.icon className={`h-5 w-5 shrink-0 ${formData[feature.id as keyof typeof formData] ? 'scale-110' : ''}`} />
+                <span className="text-sm leading-tight">{feature.label}</span>
               </Toggle>
             </motion.div>
           ))}
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 border-t pt-4">
+      <div className="grid gap-4 rounded-3xl border border-zinc-200/80 bg-zinc-50/70 p-5 dark:border-zinc-800 dark:bg-zinc-900/40 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="location_lat" className="font-bold text-zinc-400">Latitud</Label>
+          <Label htmlFor="location_lat" className="font-bold text-zinc-500 dark:text-zinc-400">Latitud</Label>
           <Input
             id="location_lat"
             name="location_lat"
@@ -210,11 +215,11 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
             step="any"
             value={formData.location_lat}
             onChange={(e) => setFormData(prev => ({ ...prev, location_lat: parseFloat(e.target.value) || 0 }))}
-            className="rounded-xl bg-zinc-50 dark:bg-zinc-900 border-zinc-100"
+            className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="location_lng" className="font-bold text-zinc-400">Longitud</Label>
+          <Label htmlFor="location_lng" className="font-bold text-zinc-500 dark:text-zinc-400">Longitud</Label>
           <Input
             id="location_lng"
             name="location_lng"
@@ -222,12 +227,12 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
             step="any"
             value={formData.location_lng}
             onChange={(e) => setFormData(prev => ({ ...prev, location_lng: parseFloat(e.target.value) || 0 }))}
-            className="rounded-xl bg-zinc-50 dark:bg-zinc-900 border-zinc-100"
+            className="h-11 rounded-2xl border-zinc-200 bg-white px-4 shadow-sm transition-all focus:border-orange-500 focus:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-950"
           />
         </div>
       </div>
 
-      <div className="flex justify-end space-x-3 pt-6">
+      <div className="flex justify-end gap-3 pt-2">
         <Button type="button" variant="outline" onClick={onCancel} disabled={loading} className="rounded-xl px-6 h-11 font-bold">
           Cancelar
         </Button>
