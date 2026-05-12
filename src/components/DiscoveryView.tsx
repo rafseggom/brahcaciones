@@ -98,21 +98,35 @@ export function DiscoveryView() {
 
         {isLoading && alojamientos.length === 0 ? (
           <div className="flex justify-center py-20">
-            <p className="text-zinc-500 animate-pulse">Cargando alojamientos...</p>
+            <div className="flex flex-col items-center gap-4">
+              <RefreshCw className="h-10 w-10 text-orange-500 animate-spin" />
+              <p className="text-zinc-500 font-medium animate-pulse">Buscando los mejores sitios...</p>
+            </div>
           </div>
         ) : sortedAlojamientos.length === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-zinc-900 rounded-xl border border-dashed">
-            <p className="text-zinc-500">No se encontraron alojamientos.</p>
+          <div className="text-center py-20 bg-white dark:bg-zinc-900 rounded-3xl border-2 border-dashed border-zinc-100 dark:border-zinc-800 animate-in fade-in zoom-in duration-500">
+            <p className="text-zinc-500 font-medium">No se encontraron alojamientos.</p>
+            <Button variant="link" onClick={fetchAlojamientos} className="text-orange-500 mt-2">
+              Volver a intentar
+            </Button>
           </div>
         ) : (
-          <div className="grid gap-4">
-            {sortedAlojamientos.map((alojamiento) => (
-              <AccommodationCard 
+          <div className="grid gap-6 pb-10">
+            {sortedAlojamientos.map((alojamiento, index) => (
+              <div 
                 key={alojamiento.id} 
-                alojamiento={alojamiento} 
-                onClick={() => handleSelectAlojamiento(alojamiento)}
-                onVote={handleVoteChange}
-              />
+                className="animate-in fade-in slide-in-from-bottom-8 duration-700"
+                style={{ 
+                  animationDelay: `${index * 100}ms`,
+                  animationFillMode: 'backwards'
+                }}
+              >
+                <AccommodationCard 
+                  alojamiento={alojamiento} 
+                  onClick={() => handleSelectAlojamiento(alojamiento)}
+                  onVote={handleVoteChange}
+                />
+              </div>
             ))}
           </div>
         )}
