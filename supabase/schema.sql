@@ -6,7 +6,13 @@ CREATE TABLE alojamientos (
   dates TEXT,
   location_lat DOUBLE PRECISION,
   location_lng DOUBLE PRECISION,
-  features JSONB DEFAULT '[]',
+  image_url TEXT,
+  description TEXT,
+  has_pool BOOLEAN DEFAULT false,
+  has_bbq BOOLEAN DEFAULT false,
+  individual_beds BOOLEAN DEFAULT false,
+  sofa_bed BOOLEAN DEFAULT false,
+  near_beach BOOLEAN DEFAULT false,
   link TEXT,
   created_at TIMESTAMPTZ DEFAULT now()
 );
