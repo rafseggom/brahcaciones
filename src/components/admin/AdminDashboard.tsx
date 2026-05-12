@@ -66,7 +66,7 @@ export const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="w-full">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Panel de Administración</h1>
         

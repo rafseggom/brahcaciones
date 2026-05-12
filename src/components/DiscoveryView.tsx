@@ -74,7 +74,7 @@ export function DiscoveryView() {
       </div>
 
       {/* List Panel */}
-      <div className="w-full lg:w-[40%] h-full overflow-y-auto p-6 bg-zinc-50/50 dark:bg-zinc-950/50">
+      <div className="w-full lg:w-[40%] h-full overflow-y-auto px-8 py-6 bg-zinc-50/50 dark:bg-zinc-950/50">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold">Descubrir</h2>
