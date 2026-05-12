@@ -3,7 +3,7 @@ export interface Alojamiento {
   id: string;
   title: string;
   price?: string;
-  dates?: string;
+  rooms?: number;
   location_lat?: number;
   location_lng?: number;
   image_url?: string;
