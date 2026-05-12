@@ -43,7 +43,13 @@
 
 ## Milestone 2: Frontend Refactor & Visual Overhaul
 
+- [x] **Phase 6: Core Visual Overhaul** - Complete visual redesign of the app with modern aesthetics, animations, and fixed admin feedback. (completed 2026-05-12)
+- [ ] **Phase 7: Discovery & Detail Refactor** - Refactor the map discovery experience and the main accommodation detail view.
+
+## Phase Details
+...
 ### Phase 6: Core Visual Overhaul
+**Status**: Completed ✅
 **Goal**: Complete visual redesign of the app with modern aesthetics, animations, and fixed admin feedback.
 **Mode**: standard
 **Depends on**: Phase 5
@@ -51,6 +57,8 @@
 **Success Criteria**:
   1. The app has a distinct, professional visual style with high-quality animations.
   2. Admin feature buttons show clear visual feedback when selected.
+**Plans**:
+- [x] 06-PLAN.md — Playful animations, typography overhaul, and admin polish.
 
 ### Phase 7: Discovery & Detail Refactor
 **Goal**: Refactor the map discovery experience and the main accommodation detail view.
@@ -70,3 +78,5 @@
 | 3. Discovery & Context | 3/3 | Completed | 12/05/2026 |
 | 4. Decision Loop | 3/3 | Completed | 12/05/2026 |
 | 5. Refinement & Visual Polish | 3/3 | Complete   | 2026-05-12 |
+| 6. Core Visual Overhaul | 1/1 | Completed | 2026-05-12 |
+| 7. Discovery & Detail Refactor | 0/1 | Planned | - |

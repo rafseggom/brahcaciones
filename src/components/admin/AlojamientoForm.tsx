@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -109,125 +110,99 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
     <form onSubmit={handleSubmit} className="space-y-4 py-4">
       <div className="grid grid-cols-2 gap-4">
         <div className="col-span-2 space-y-2">
-          <Label>Búsqueda de Dirección (Autocompleta Lat/Lng)</Label>
+          <Label className="font-bold text-zinc-500 dark:text-zinc-400">Búsqueda de Dirección (Autocompleta Lat/Lng)</Label>
           <GeocodingSearch onSelect={handleGeocodingSelect} />
         </div>
         
         <div className="space-y-2">
-          <Label htmlFor="title">Título</Label>
+          <Label htmlFor="title" className="font-bold">Título</Label>
           <Input
             id="title"
             name="title"
             value={formData.title}
             onChange={handleChange}
             required
+            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="price">Precio</Label>
+          <Label htmlFor="price" className="font-bold">Precio</Label>
           <Input
             id="price"
             name="price"
             value={formData.price}
             onChange={handleChange}
             placeholder="Ej: 150€/noche"
+            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="rooms">Habitaciones</Label>
+          <Label htmlFor="rooms" className="font-bold">Habitaciones</Label>
           <Input
             id="rooms"
             name="rooms"
             type="number"
             value={formData.rooms}
             onChange={(e) => setFormData(prev => ({ ...prev, rooms: parseInt(e.target.value) || 0 }))}
+            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="link">Enlace (Airbnb/Booking)</Label>
+          <Label htmlFor="link" className="font-bold">Enlace (Airbnb/Booking)</Label>
           <Input
             id="link"
             name="link"
             value={formData.link}
             onChange={handleChange}
             placeholder="https://..."
+            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
           />
         </div>
         <div className="col-span-2 space-y-2">
-          <Label htmlFor="image_url">URL de Imagen</Label>
+          <Label htmlFor="image_url" className="font-bold">URL de Imagen</Label>
           <Input
             id="image_url"
             name="image_url"
             value={formData.image_url}
             onChange={handleChange}
             placeholder="https://..."
+            className="rounded-xl border-zinc-200 focus:border-orange-500 focus:ring-orange-500 transition-all"
           />
         </div>
       </div>
 
-      <div className="space-y-2 border-t pt-4">
-        <Label>Características</Label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-          <Toggle
-            aria-label="Piscina"
-            pressed={formData.has_pool}
-            onPressedChange={(pressed) => handleSwitchChange('has_pool', pressed)}
-            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-orange-500 data-[state=on]:text-white transition-all border border-orange-100/50"
-            variant="outline"
-          >
-            <Waves className="h-5 w-5" />
-            <span>Piscina</span>
-          </Toggle>
-
-          <Toggle
-            aria-label="Barbacoa"
-            pressed={formData.has_bbq}
-            onPressedChange={(pressed) => handleSwitchChange('has_bbq', pressed)}
-            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-pink-500 data-[state=on]:text-white transition-all border border-pink-100/50"
-            variant="outline"
-          >
-            <Flame className="h-5 w-5" />
-            <span>Barbacoa</span>
-          </Toggle>
-
-          <Toggle
-            aria-label="Camas Individuales"
-            pressed={formData.individual_beds}
-            onPressedChange={(pressed) => handleSwitchChange('individual_beds', pressed)}
-            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-orange-500 data-[state=on]:text-white transition-all border border-orange-100/50"
-            variant="outline"
-          >
-            <Bed className="h-5 w-5" />
-            <span className="text-xs">Individuales</span>
-          </Toggle>
-
-          <Toggle
-            aria-label="Sofá Cama"
-            pressed={formData.sofa_bed}
-            onPressedChange={(pressed) => handleSwitchChange('sofa_bed', pressed)}
-            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-pink-500 data-[state=on]:text-white transition-all border border-pink-100/50"
-            variant="outline"
-          >
-            <Armchair className="h-5 w-5" />
-            <span>Sofá Cama</span>
-          </Toggle>
-
-          <Toggle
-            aria-label="Cerca de la Playa"
-            pressed={formData.near_beach}
-            onPressedChange={(pressed) => handleSwitchChange('near_beach', pressed)}
-            className="flex items-center gap-2 justify-start px-3 h-12 data-[state=on]:bg-orange-500 data-[state=on]:text-white transition-all border border-orange-100/50"
-            variant="outline"
-          >
-            <Umbrella className="h-5 w-5" />
-            <span>Playa</span>
-          </Toggle>
+      <div className="space-y-3 border-t pt-4">
+        <Label className="font-bold text-lg">Características</Label>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {[
+            { id: 'has_pool', label: 'Piscina', icon: Waves, color: 'bg-orange-500' },
+            { id: 'has_bbq', label: 'Barbacoa', icon: Flame, color: 'bg-pink-500' },
+            { id: 'individual_beds', label: 'Individuales', icon: Bed, color: 'bg-orange-500' },
+            { id: 'sofa_bed', label: 'Sofá Cama', icon: Armchair, color: 'bg-pink-500' },
+            { id: 'near_beach', label: 'Playa', icon: Umbrella, color: 'bg-orange-500' },
+          ].map((feature) => (
+            <motion.div key={feature.id} whileTap={{ scale: 0.95 }}>
+              <Toggle
+                aria-label={feature.label}
+                pressed={formData[feature.id as keyof typeof formData] as boolean}
+                onPressedChange={(pressed) => handleSwitchChange(feature.id, pressed)}
+                className={`flex w-full items-center gap-2 justify-start px-4 h-14 rounded-2xl transition-all duration-300 border-2
+                  data-[state=on]:${feature.color} data-[state=on]:text-white data-[state=on]:border-transparent data-[state=on]:shadow-lg
+                  data-[state=off]:bg-zinc-50 data-[state=off]:text-zinc-400 data-[state=off]:border-zinc-100 dark:data-[state=off]:bg-zinc-900 dark:data-[state=off]:border-zinc-800
+                  hover:data-[state=off]:border-zinc-300`}
+                variant="outline"
+              >
+                <feature.icon className={`h-5 w-5 ${formData[feature.id as keyof typeof formData] ? 'animate-bounce' : ''}`} />
+                <span className="font-bold text-sm">{feature.label}</span>
+              </Toggle>
+            </motion.div>
+          ))}
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 border-t pt-4">
         <div className="space-y-2">
-          <Label htmlFor="location_lat">Latitud</Label>
+          <Label htmlFor="location_lat" className="font-bold text-zinc-400">Latitud</Label>
           <Input
             id="location_lat"
             name="location_lat"
@@ -235,10 +210,11 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
             step="any"
             value={formData.location_lat}
             onChange={(e) => setFormData(prev => ({ ...prev, location_lat: parseFloat(e.target.value) || 0 }))}
+            className="rounded-xl bg-zinc-50 dark:bg-zinc-900 border-zinc-100"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="location_lng">Longitud</Label>
+          <Label htmlFor="location_lng" className="font-bold text-zinc-400">Longitud</Label>
           <Input
             id="location_lng"
             name="location_lng"
@@ -246,16 +222,17 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
             step="any"
             value={formData.location_lng}
             onChange={(e) => setFormData(prev => ({ ...prev, location_lng: parseFloat(e.target.value) || 0 }))}
+            className="rounded-xl bg-zinc-50 dark:bg-zinc-900 border-zinc-100"
           />
         </div>
       </div>
 
-      <div className="flex justify-end space-x-2 pt-4">
-        <Button type="button" variant="outline" onClick={onCancel} disabled={loading}>
+      <div className="flex justify-end space-x-3 pt-6">
+        <Button type="button" variant="outline" onClick={onCancel} disabled={loading} className="rounded-xl px-6 h-11 font-bold">
           Cancelar
         </Button>
-        <Button type="submit" disabled={loading}>
-          {loading ? 'Guardando...' : 'Guardar'}
+        <Button type="submit" disabled={loading} className="rounded-xl px-8 h-11 font-bold bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 border-none shadow-md hover:shadow-lg transition-all">
+          {loading ? 'Guardando...' : 'Guardar Alojamiento'}
         </Button>
       </div>
     </form>

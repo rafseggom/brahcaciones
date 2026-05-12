@@ -12,7 +12,6 @@ import {
   Waves,
   ExternalLink,
   MapPin,
-  Euro,
   Lock,
   Home
 } from "lucide-react";

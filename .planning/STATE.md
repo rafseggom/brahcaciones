@@ -1,15 +1,15 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
+milestone: v2.0
+milestone_name: Frontend Refactor & Visual Overhaul
 status: in-progress
-last_updated: "2024-05-13T12:00:00.000Z"
+last_updated: "2026-05-12T12:00:00.000Z"
 progress:
-  total_phases: 5
-  completed_phases: 4
-  total_plans: 15
-  completed_plans: 13
-  percent: 87
+  total_phases: 7
+  completed_phases: 6
+  total_plans: 16
+  completed_plans: 14
+  percent: 85
 ---
 
 # Project State: Brahcaciones
@@ -17,20 +17,20 @@ progress:
 ## Project Reference
 
 **Core Value**: Facilitar la toma de decisiones grupal mediante un sistema de votación transparente y una visualización clara de las opciones de alojamiento.
-**Current Focus**: Phase 5 - Refinement & Visual Polish
+**Current Focus**: Phase 7 - Discovery & Detail Refactor
 
 ## Current Position
 
-**Phase**: 5
-**Plan**: 05-03
+**Phase**: 6
+**Plan**: 06-01
 **Status**: Completed
 **Progress**: [████████████████████] 100%
 
 ## Performance Metrics
 
-- **Velocity**: 14 requirements/session
+- **Velocity**: 18 requirements/session
 - **Health**: Green
-- **Requirements Coverage**: 100% (23/23 mapped)
+- **Requirements Coverage**: 100% (27/27 mapped)
 
 ## Accumulated Context
 
@@ -46,6 +46,7 @@ progress:
 - 0-5 Star voting with Blind Voting logic (hide averages until user votes).
 - Automatic ranking by average rating post-participation.
 - Phase 5: Style Option B (Playful/Travel), Full Screen Layout, Manual Theme Toggle.
+- Phase 6: Core Visual Overhaul with Bouncy & Playful animations (Framer Motion), "Plus Jakarta Sans" typography, and enhanced Admin Toggle feedback.
 
 ### Blockers / Risks
 
@@ -58,8 +59,10 @@ progress:
 - [x] Phase 3: Discovery & Context
 - [x] Phase 4: Decision Loop
 - [x] Phase 5: Refinement & Visual Polish
+- [x] Phase 6: Core Visual Overhaul
+- [ ] Phase 7: Discovery & Detail Refactor
 
 ## Session Continuity
 
-**Last session ended at**: Phase 5 Plan 03 completed.
-**Next session should start with**: Milestone 1 review or new requirements.
+**Last session ended at**: Phase 6 completed.
+**Next session should start with**: Phase 7 - Discovery & Detail Refactor (MAP-01, MAP-02, USER-07, USER-08, USER-09).

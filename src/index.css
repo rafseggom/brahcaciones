@@ -15,12 +15,12 @@
   --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
   --shadow-soft: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: 'Plus Jakarta Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Plus Jakarta Sans', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  letter-spacing: -0.01em;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -36,17 +36,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #09090b;
-    --border: #18181b;
-    --code-bg: #1f2028;
+    --text: #e2e8f0;
+    --text-h: #f8fafc;
+    --bg: #0f172a;
+    --border: #1e293b;
+    --code-bg: #1e293b;
     --accent: #fb923c;
     --accent-bg: rgba(251, 146, 60, 0.15);
     --accent-border: rgba(251, 146, 60, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-    --shadow-soft: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    --social-bg: rgba(30, 41, 59, 0.5);
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-soft: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
   }
 
   #social .button-icon {
@@ -60,6 +60,10 @@
   }
   .shadow-soft {
     box-shadow: var(--shadow-soft);
+  }
+  .heading-bold {
+    font-weight: 800;
+    letter-spacing: -0.04em;
   }
 }
 
@@ -75,15 +79,17 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--heading);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-h);
+  letter-spacing: -0.03em;
 }
 
 h1 {
   font-size: 56px;
-  letter-spacing: -1.68px;
+  line-height: 1.1;
   margin: 32px 0;
   @media (max-width: 1024px) {
     font-size: 36px;
@@ -91,13 +97,17 @@ h1 {
   }
 }
 h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 12px;
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 24px;
   }
+}
+h3 {
+  font-size: 24px;
+  line-height: 1.3;
+  margin: 0 0 8px;
 }
 p {
   margin: 0;

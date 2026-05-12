@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
+import { motion } from "framer-motion";
 import { getAlojamientos } from "../lib/alojamientos";
 import type { Alojamiento } from "../types/alojamiento";
 import { AccommodationCard } from "./AccommodationCard";
@@ -7,6 +8,16 @@ import { AccommodationSheet } from "./AccommodationSheet";
 import { useAuth } from "../context/AuthContext";
 import { RefreshCw } from "lucide-react";
 import { Button } from "./ui/button";
+
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
 
 export function DiscoveryView() {
   const { user } = useAuth();
@@ -76,20 +87,23 @@ export function DiscoveryView() {
       {/* List Panel */}
       <div className="w-full lg:w-[40%] h-full overflow-y-auto px-8 py-6 bg-zinc-50/50 dark:bg-zinc-950/50">
         <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-bold">Descubrir</h2>
-            <p className="text-sm text-zinc-500">
-              {hasParticipated ? "Ordenado por valoración" : "Ordenado por fecha"}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <h2 className="text-3xl font-extrabold tracking-tight">Descubrir</h2>
+            <p className="text-sm text-zinc-500 font-medium mt-0.5">
+              {hasParticipated ? "✨ Ordenado por valoración ✨" : "📅 Ordenado por fecha"}
             </p>
-          </div>
+          </motion.div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-zinc-500 mr-2">{alojamientos.length} opciones</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 mr-2">{alojamientos.length} opciones</span>
             <Button 
               variant="outline" 
               size="icon" 
               onClick={fetchAlojamientos}
               disabled={isLoading}
-              className="h-8 w-8"
+              className="h-9 w-9 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
               <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
             </Button>
@@ -99,36 +113,42 @@ export function DiscoveryView() {
         {isLoading && alojamientos.length === 0 ? (
           <div className="flex justify-center py-20">
             <div className="flex flex-col items-center gap-4">
-              <RefreshCw className="h-10 w-10 text-orange-500 animate-spin" />
-              <p className="text-zinc-500 font-medium animate-pulse">Buscando los mejores sitios...</p>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              >
+                <RefreshCw className="h-10 w-10 text-orange-500" />
+              </motion.div>
+              <p className="text-zinc-500 font-bold animate-pulse">Buscando los mejores sitios...</p>
             </div>
           </div>
         ) : sortedAlojamientos.length === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-zinc-900 rounded-3xl border-2 border-dashed border-zinc-100 dark:border-zinc-800 animate-in fade-in zoom-in duration-500">
-            <p className="text-zinc-500 font-medium">No se encontraron alojamientos.</p>
-            <Button variant="link" onClick={fetchAlojamientos} className="text-orange-500 mt-2">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-20 bg-white dark:bg-zinc-900 rounded-3xl border-2 border-dashed border-zinc-100 dark:border-zinc-800"
+          >
+            <p className="text-zinc-500 font-bold text-lg">No se encontraron alojamientos.</p>
+            <Button variant="link" onClick={fetchAlojamientos} className="text-orange-500 mt-2 font-bold">
               Volver a intentar
             </Button>
-          </div>
+          </motion.div>
         ) : (
-          <div className="grid gap-6 pb-10">
-            {sortedAlojamientos.map((alojamiento, index) => (
-              <div 
+          <motion.div 
+            variants={listVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid gap-6 pb-10"
+          >
+            {sortedAlojamientos.map((alojamiento) => (
+              <AccommodationCard 
                 key={alojamiento.id} 
-                className="animate-in fade-in slide-in-from-bottom-8 duration-700"
-                style={{ 
-                  animationDelay: `${index * 100}ms`,
-                  animationFillMode: 'backwards'
-                }}
-              >
-                <AccommodationCard 
-                  alojamiento={alojamiento} 
-                  onClick={() => handleSelectAlojamiento(alojamiento)}
-                  onVote={handleVoteChange}
-                />
-              </div>
+                alojamiento={alojamiento} 
+                onClick={() => handleSelectAlojamiento(alojamiento)}
+                onVote={handleVoteChange}
+              />
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
 
