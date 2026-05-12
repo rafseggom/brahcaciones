@@ -7,29 +7,29 @@
 
 ### Acceso (Pseudo-Auth)
 
-- [ ] **AUTH-01**: El sistema debe validar contraseñas del `.env` (5 usuarios + 1 admin).
-- [ ] **AUTH-02**: El estado de sesión debe persistir localmente (sessionStorage/localStorage) para mantener el acceso tras refrescar.
-- [ ] **AUTH-03**: Redirección automática a la vista correspondiente (User/Admin) según el código introducido.
-- [ ] **AUTH-04**: El usuario debe poder cerrar la sesión mediante un botón de logout, limpiando el estado persistido.
+- [x] **AUTH-01**: El sistema debe validar contraseñas del `.env` (5 usuarios + 1 admin).
+- [x] **AUTH-02**: El estado de sesión debe persistir localmente (sessionStorage/localStorage) para mantener el acceso tras refrescar.
+- [x] **AUTH-03**: Redirección automática a la vista correspondiente (User/Admin) según el código introducido.
+- [x] **AUTH-04**: El usuario debe poder cerrar la sesión mediante un botón de logout, limpiando el estado persistido.
 
 ### Gestión de Alojamientos (Admin)
 
-- [ ] **ADM-01**: El admin puede añadir alojamientos con: Título, Precio, Fechas, Ubicación (Lat/Lng), Características y Enlace (Airbnb/Booking).
-- [ ] **ADM-02**: El admin puede editar cualquier detalle de un alojamiento existente.
-- [ ] **ADM-03**: El admin puede eliminar alojamientos.
+- [x] **ADM-01**: El admin puede añadir alojamientos con: Título, Precio, Fechas, Ubicación (Lat/Lng), Características y Enlace (Airbnb/Booking).
+- [x] **ADM-02**: El admin puede editar cualquier detalle de un alojamiento existente.
+- [x] **ADM-03**: El admin puede eliminar alojamientos.
 
 ### Visualización y Comparación (Usuario)
 
-- [ ] **USER-01**: Lista de alojamientos con tarjetas modernas mostrando precio total y **Precio por Persona (PPP)**.
-- [ ] **USER-02**: Mapa interactivo (Leaflet) con marcadores para cada alojamiento.
-- [ ] **USER-03**: Vista de detalle para cada alojamiento con toda la información y botón para ir al enlace original.
-- [ ] **USER-04**: Selector de Modo Claro/Oscuro con toggle y persistencia de preferencia.
+- [x] **USER-01**: Lista de alojamientos con tarjetas modernas mostrando precio total y **Precio por Persona (PPP)**.
+- [x] **USER-02**: Mapa interactivo (Leaflet) con marcadores para cada alojamiento.
+- [x] **USER-03**: Vista de detalle para cada alojamiento con toda la información y botón para ir al enlace original.
+- [x] **USER-04**: Selector de Modo Claro/Oscuro con toggle y persistencia de preferencia.
 
 ### Decisiones (Votaciones)
 
-- [ ] **VOTE-01**: Cada uno de los 5 usuarios puede votar cada alojamiento de 0 a 5.
-- [ ] **VOTE-02**: El sistema debe mostrar la media de votos por alojamiento de forma clara.
-- [ ] **VOTE-03**: Un usuario puede cambiar su voto en cualquier momento, sobreescribiendo el anterior.
+- [x] **VOTE-01**: Cada uno de los 5 usuarios puede votar cada alojamiento de 0 a 5.
+- [x] **VOTE-02**: El sistema debe mostrar la media de votos por alojamiento de forma clara.
+- [x] **VOTE-03**: Un usuario puede cambiar su voto en cualquier momento, sobreescribiendo el anterior.
 
 ## v2 Requirements (Deferred)
 
@@ -49,20 +49,20 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
-| ADM-01 | Phase 2 | Pending |
-| ADM-02 | Phase 2 | Pending |
-| ADM-03 | Phase 2 | Pending |
-| USER-01 | Phase 3 | Pending |
-| USER-02 | Phase 3 | Pending |
-| USER-03 | Phase 3 | Pending |
-| USER-04 | Phase 3 | Pending |
-| VOTE-01 | Phase 4 | Pending |
-| VOTE-02 | Phase 4 | Pending |
-| VOTE-03 | Phase 4 | Pending |
+| AUTH-01 | Phase 1 | Completed |
+| AUTH-02 | Phase 1 | Completed |
+| AUTH-03 | Phase 1 | Completed |
+| AUTH-04 | Phase 1 | Completed |
+| ADM-01 | Phase 2 | Completed |
+| ADM-02 | Phase 2 | Completed |
+| ADM-03 | Phase 2 | Completed |
+| USER-01 | Phase 3 | Completed |
+| USER-02 | Phase 3 | Completed |
+| USER-03 | Phase 3 | Completed |
+| USER-04 | Phase 3 | Completed |
+| VOTE-01 | Phase 4 | Completed |
+| VOTE-02 | Phase 4 | Completed |
+| VOTE-03 | Phase 4 | Completed |
 
 **Coverage:**
 - v1 requirements: 14 total
@@ -71,4 +71,4 @@
 
 ---
 *Requirements defined: 12/05/2026*
-*Last updated: 12/05/2026 after roadmap creation*
+*Last updated: 12/05/2026 after milestone audit*
