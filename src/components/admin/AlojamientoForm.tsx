@@ -24,7 +24,7 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
   const [formData, setFormData] = useState<Omit<Alojamiento, 'id' | 'created_at'>>({
     title: '',
     price: '',
-    dates: '',
+    rooms: 0,
     location_lat: 0,
     location_lng: 0,
     image_url: '',
@@ -42,7 +42,7 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
       setFormData({
         title: alojamiento.title || '',
         price: alojamiento.price || '',
-        dates: alojamiento.dates || '',
+        rooms: alojamiento.rooms || 0,
         location_lat: alojamiento.location_lat || 0,
         location_lng: alojamiento.location_lng || 0,
         image_url: alojamiento.image_url || '',
@@ -133,13 +133,13 @@ export const AlojamientoForm: React.FC<AlojamientoFormProps> = ({
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="dates">Fechas</Label>
+          <Label htmlFor="rooms">Habitaciones</Label>
           <Input
-            id="dates"
-            name="dates"
-            value={formData.dates}
-            onChange={handleChange}
-            placeholder="Ej: Agosto"
+            id="rooms"
+            name="rooms"
+            type="number"
+            value={formData.rooms}
+            onChange={(e) => setFormData(prev => ({ ...prev, rooms: parseInt(e.target.value) || 0 }))}
           />
         </div>
         <div className="space-y-2">

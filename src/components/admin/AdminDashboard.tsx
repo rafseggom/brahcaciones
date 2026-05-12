@@ -96,7 +96,7 @@ export const AdminDashboard: React.FC = () => {
             <TableRow>
               <TableHead>Título</TableHead>
               <TableHead>Precio</TableHead>
-              <TableHead>Fechas</TableHead>
+              <TableHead>Hab.</TableHead>
               <TableHead className="text-center">Características</TableHead>
               <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
@@ -131,7 +131,7 @@ export const AdminDashboard: React.FC = () => {
                     )}
                   </TableCell>
                   <TableCell>{alojamiento.price || '-'}</TableCell>
-                  <TableCell>{alojamiento.dates || '-'}</TableCell>
+                  <TableCell>{alojamiento.rooms || 0}</TableCell>
                   <TableCell className="text-center">
                     <div className="flex justify-center gap-1">
                       {alojamiento.has_pool && <span title="Piscina">🏊</span>}
