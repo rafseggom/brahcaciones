@@ -13,8 +13,7 @@ import {
   Dialog, 
   DialogContent, 
   DialogHeader, 
-  DialogTitle, 
-  DialogTrigger 
+  DialogTitle
 } from '@/components/ui/dialog';
 import type { Alojamiento } from '@/types/alojamiento';
 import { getAlojamientos, deleteAlojamiento } from '@/lib/alojamientos';
@@ -72,11 +71,9 @@ export const AdminDashboard: React.FC = () => {
         <h1 className="text-3xl font-bold">Panel de Administración</h1>
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogTrigger asChild>
-            <Button onClick={handleAdd}>
-              <Plus className="mr-2 h-4 w-4" /> Añadir Alojamiento
-            </Button>
-          </DialogTrigger>
+          <Button onClick={handleAdd}>
+            <Plus className="mr-2 h-4 w-4" /> Añadir Alojamiento
+          </Button>
           <DialogContent className="max-w-2xl overflow-y-auto max-h-[90vh]">
             <DialogHeader>
               <DialogTitle>
