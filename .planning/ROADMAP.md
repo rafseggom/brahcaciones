@@ -31,7 +31,10 @@
 **Success Criteria** (what must be TRUE):
   1. The admin can successfully create, update, and delete an accommodation record.
   2. Data is persisted in Supabase and visible in the admin interface.
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 02-01-PLAN.md — Data model update and Supabase layer.
+- [ ] 02-02-PLAN.md — Admin Dashboard and basic CRUD interface.
+- [ ] 02-03-PLAN.md — Geocoding integration and feature toggles.
 **UI hint**: yes
 
 ### Phase 3: Discovery & Context
@@ -62,6 +65,6 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundations & Access | 0/3 | Not started | - |
-| 2. Admin Control | 0/0 | Not started | - |
+| 2. Admin Control | 0/3 | Not started | - |
 | 3. Discovery & Context | 0/0 | Not started | - |
 | 4. Decision Loop | 0/0 | Not started | - |
