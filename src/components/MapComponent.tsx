@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { useEffect, useCallback } from 'react';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { useTheme } from 'next-themes';
 import { Alojamiento } from '../types/alojamiento';
@@ -15,23 +15,35 @@ let DefaultIcon = L.icon({
   iconAnchor: [12, 41],
 });
 
+let SelectedIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [30, 46],
+  iconAnchor: [15, 46],
+  className: 'selected-marker'
+});
+
 L.Marker.prototype.options.icon = DefaultIcon;
 
 interface MapComponentProps {
   alojamientos: Alojamiento[];
+  onSelectAlojamiento?: (alojamiento: Alojamiento) => void;
+  selectedAlojamientoId?: string;
 }
 
-function ChangeView({ bounds }: { bounds: L.LatLngBoundsExpression }) {
+function ChangeView({ bounds, center }: { bounds: L.LatLngBoundsExpression; center?: [number, number] }) {
   const map = useMap();
   useEffect(() => {
-    if (bounds) {
+    if (center) {
+      map.setView(center, 15, { animate: true });
+    } else if (bounds) {
       map.fitBounds(bounds, { padding: [50, 50] });
     }
-  }, [bounds, map]);
+  }, [bounds, center, map]);
   return null;
 }
 
-const MapComponent = ({ alojamientos }: MapComponentProps) => {
+const MapComponent = ({ alojamientos, onSelectAlojamiento, selectedAlojamientoId }: MapComponentProps) => {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = resolvedTheme || theme;
 
@@ -47,7 +59,12 @@ const MapComponent = ({ alojamientos }: MapComponentProps) => {
 
   const bounds = validMarkers.length > 0
     ? L.latLngBounds(validMarkers.map((a) => [a.location_lat!, a.location_lng!]))
-    : L.latLngBounds([[40, -4], [40, -4]]); // Default center if no markers
+    : L.latLngBounds([[40, -4], [40, -4]]);
+
+  const selectedAlojamiento = validMarkers.find(a => a.id === selectedAlojamientoId);
+  const center: [number, number] | undefined = selectedAlojamiento 
+    ? [selectedAlojamiento.location_lat!, selectedAlojamiento.location_lng!] 
+    : undefined;
 
   return (
     <MapContainer
@@ -63,14 +80,13 @@ const MapComponent = ({ alojamientos }: MapComponentProps) => {
         <Marker
           key={alojamiento.id}
           position={[alojamiento.location_lat!, alojamiento.location_lng!]}
-        >
-          <Popup>
-            <div className="font-semibold">{alojamiento.title}</div>
-            {alojamiento.price && <div className="text-sm">{alojamiento.price}</div>}
-          </Popup>
-        </Marker>
+          icon={alojamiento.id === selectedAlojamientoId ? SelectedIcon : DefaultIcon}
+          eventHandlers={{
+            click: () => onSelectAlojamiento?.(alojamiento),
+          }}
+        />
       ))}
-      {validMarkers.length > 0 && <ChangeView bounds={bounds} />}
+      <ChangeView bounds={bounds} center={center} />
     </MapContainer>
   );
 };
