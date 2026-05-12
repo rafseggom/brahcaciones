@@ -1,10 +1,10 @@
 import { supabase } from './supabase';
 import { Alojamiento } from '../types/alojamiento';
 
-export const getAlojamientos = async (): Promise<Alojamiento[]> => {
+export const getAlojamientos = async (usuarioSlug?: string): Promise<Alojamiento[]> => {
   const { data, error } = await supabase
     .from('alojamientos')
-    .select('*')
+    .select('*, votos(puntuacion, usuario_slug)')
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -12,7 +12,24 @@ export const getAlojamientos = async (): Promise<Alojamiento[]> => {
     return [];
   }
 
-  return data || [];
+  return (data || []).map((item: any) => {
+    const votos = item.votos || [];
+    const total_votes = votos.length;
+    const sum = votos.reduce((acc: number, curr: any) => acc + curr.puntuacion, 0);
+    const avg_rating = total_votes > 0 ? sum / total_votes : 0;
+    const user_vote = usuarioSlug 
+      ? votos.find((v: any) => v.usuario_slug === usuarioSlug)?.puntuacion 
+      : undefined;
+
+    const { votos: _, ...alojamientoWithoutVotos } = item;
+
+    return {
+      ...alojamientoWithoutVotos,
+      avg_rating,
+      total_votes,
+      user_vote
+    };
+  });
 };
 
 export const createAlojamiento = async (alojamiento: Omit<Alojamiento, 'id' | 'created_at'>): Promise<Alojamiento | null> => {
