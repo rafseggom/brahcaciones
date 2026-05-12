@@ -31,22 +31,24 @@
 - [x] **VOTE-02**: El sistema debe mostrar la media de votos por alojamiento de forma clara.
 - [x] **VOTE-03**: Un usuario puede cambiar su voto en cualquier momento, sobreescribiendo el anterior.
 
-## Phase 5: Refinement & Visual Polish
+## Milestone 2: Frontend Refactor & Visual Overhaul
 
-### UI/UX Refinements
-- [ ] **REF-01**: Layout de pantalla completa (eliminar márgenes laterales excesivos).
-- [ ] **REF-02**: Toggle de tema manual (claro/oscuro) que afecte a toda la app, no solo al mapa.
-- [x] **REF-03**: Mejora estética general (efectos visuales, más color, menos plano).
-- [ ] **REF-04**: Modales opacos para evitar confusión visual con el fondo.
+### UI/UX Overhaul
+- [ ] **REF-05**: Implementar una estética "Playful/Travel" avanzada con paleta de colores vibrantes pero equilibrada (no solo dark mode).
+- [ ] **REF-06**: Transiciones suaves y animaciones de entrada para tarjetas y modales (Framer Motion).
+- [ ] **REF-07**: Mejorar legibilidad de tipografías y jerarquía visual.
 
-### Data & Logic Cleanup
-- [ ] **DATA-01**: Eliminar campo "Fecha" (no es necesario).
-- [ ] **DATA-02**: Simplificar precio a "Total" únicamente.
-- [ ] **DATA-03**: Asegurar que los botones de características (piscina, etc.) funcionen y persistan correctamente.
+### Admin Experience
+- [ ] **ADM-04**: Implementar Toggle Buttons con estados visuales activos/inactivos claros (colores, sombras, iconos) para las características del alojamiento.
 
-### User View Enhancements
-- [x] **USER-05**: Mostrar tanto Precio Total como Precio por Persona (PPP) en la vista de usuario.
-- [x] **USER-06**: Ajustar bloques de información para evitar recortes visuales.
+### Discovery & Map
+- [ ] **MAP-01**: Añadir popups o tooltips a los marcadores de Leaflet que muestren el nombre y precio al pasar el ratón (hover) o hacer click.
+- [ ] **MAP-02**: Centrar y ajustar el zoom del mapa automáticamente al seleccionar un alojamiento.
+
+### Accommodation Detail View
+- [ ] **USER-07**: Refactorizar la Side Sheet a un Modal Central grande.
+- [ ] **USER-08**: Integrar un mapa secundario dentro del modal que muestre la ubicación exacta con un nivel de zoom alto.
+- [ ] **USER-09**: Organización de la información en el modal (fotos, descripción, características, mapa, enlace) con un layout de rejilla moderna.
 
 ## v2 Requirements (Deferred)
 

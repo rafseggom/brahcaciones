@@ -12,17 +12,14 @@ Facilitar la toma de decisiones grupal mediante un sistema de votación transpar
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] **v1: Functional MVP** — Auth, CRUD, Voting, Map/List View, Basic Polish.
 
 ### Active
 
-- [ ] **Acceso por Contraseña**: Sistema de login basado en contraseñas predefinidas en `.env` para distinguir entre 5 usuarios y 1 administrador.
-- [ ] **Modo Usuario**: Visualización de alojamientos en lista y mapa (Leaflet).
-- [ ] **Detalle de Alojamiento**: Vista expandida con características, fechas, precio y enlace externo (Airbnb/Booking).
-- [ ] **Sistema de Votación**: Votación de 0 a 5 por alojamiento, permitiendo cambios y evitando duplicados por usuario.
-- [ ] **Modo Admin**: Interfaz para insertar, editar y eliminar alojamientos.
-- [ ] **Interfaz Dual**: Soporte para modo claro y oscuro con selector (toggle).
-- [ ] **Persistencia**: Integración con Supabase para almacenar alojamientos y votos.
+- [ ] **Overhaul Estético**: Interfaz moderna, menos oscura, con estética de alta calidad y animaciones fluidas.
+- [ ] **Feedback Admin**: Estados visuales claros para los selectores de características (Piscina, Barbacoa, etc.).
+- [ ] **Contexto en Mapa**: Popups/Tooltips al pasar el ratón por los pinpoints para identificar alojamientos.
+- [ ] **Refactor Detalle**: Cambio de barra lateral (Side Sheet) a Modal Central grande con mapa integrado y zoom específico.
 
 ### Out of Scope
 
@@ -32,39 +29,26 @@ Facilitar la toma de decisiones grupal mediante un sistema de votación transpar
 
 ## Context
 
-El proyecto busca una estética de "SaaS moderno": minimalista, limpia y profesional. Se utilizarán herramientas gratuitas (Leaflet para mapas) y una infraestructura serverless (Supabase) para mantener el coste en cero y la complejidad baja.
+El proyecto busca una estética de "SaaS moderno": minimalista, limpia y profesional. Tras el MVP, el foco es la excelencia visual y de experiencia de usuario (UX).
 
 ## Constraints
 
-- **Tecnología**: React + Vite + Tailwind CSS.
+- **Tecnología**: React + Vite + Tailwind CSS + Framer Motion.
 - **Base de Datos**: Supabase.
 - **Mapas**: Debe ser una solución gratuita (Leaflet).
-- **Seguridad**: Autenticación simple basada en variables de entorno (sin sistema de usuarios complejo).
+- **Seguridad**: Autenticación simple basada en variables de entorno.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Leaflet para Mapas | Google Maps requiere tarjeta/crédito; Leaflet es gratuito y suficiente para marcar puntos. | — Pending |
-| Identificación por .env | Método más simple para un grupo de 5 personas sin necesidad de registro. | — Pending |
-| Supabase | Facilidad de configuración para persistencia de datos y escalado rápido. | — Pending |
+| Leaflet para Mapas | Gratuito y suficiente. | ✅ Functional |
+| Identificación por .env | Simplicidad para grupo cerrado. | ✅ Functional |
+| Modal Central p/ Detalle | Mayor espacio para info y mapas; mejor jerarquía visual que el side sheet. | — Pending |
 
 ## Evolution
 
 This document evolves at phase transitions and milestone boundaries.
 
-**After each phase transition** (via `/gsd-transition`):
-1. Requirements invalidated? → Move to Out of Scope with reason
-2. Requirements validated? → Move to Validated with phase reference
-3. New requirements emerged? → Add to Active
-4. Decisions to log? → Add to Key Decisions
-5. "What This Is" still accurate? → Update if drifted
-
-**After each milestone** (via `/gsd:complete-milestone`):
-1. Full review of all sections
-2. Core Value check — still the right priority?
-3. Audit Out of Scope — reasons still valid?
-4. Update Context with current state
-
 ---
-*Last updated: 12/05/2026 after initialization*
+*Last updated: 12/05/2026 after Milestone 2 initialization*

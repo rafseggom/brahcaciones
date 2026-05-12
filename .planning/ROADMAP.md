@@ -41,6 +41,26 @@
 - [x] 05-02-PLAN.md — Full-width layout and theme persistence.
 - [x] 05-03-PLAN.md — Visual polish (Option B) and feature buttons.
 
+## Milestone 2: Frontend Refactor & Visual Overhaul
+
+### Phase 6: Core Visual Overhaul
+**Goal**: Complete visual redesign of the app with modern aesthetics, animations, and fixed admin feedback.
+**Mode**: standard
+**Depends on**: Phase 5
+**Requirements**: REF-05, REF-06, REF-07, ADM-04
+**Success Criteria**:
+  1. The app has a distinct, professional visual style with high-quality animations.
+  2. Admin feature buttons show clear visual feedback when selected.
+
+### Phase 7: Discovery & Detail Refactor
+**Goal**: Refactor the map discovery experience and the main accommodation detail view.
+**Mode**: standard
+**Depends on**: Phase 6
+**Requirements**: MAP-01, MAP-02, USER-07, USER-08, USER-09
+**Success Criteria**:
+  1. Map markers identify accommodations via popups/tooltips.
+  2. Detail view is a large central modal with an integrated, zoomed-in map.
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
